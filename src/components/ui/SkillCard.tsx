@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { 
   Check,
   Github,
-  Typescript,
+  FileCode2,
   MonitorPlay,
   ServerCrash,
   Cloud,
@@ -23,7 +23,7 @@ const skillIcons: Record<string, React.ElementType> = {
   'React.js': MonitorPlay,
   'Next.js': MonitorPlay,
   'Angular': MonitorPlay,
-  'TypeScript': Typescript,
+  'TypeScript': FileCode2,
   'Node.js': ServerCrash,
   'Express.js': ServerCrash,
   'MongoDB': Database,

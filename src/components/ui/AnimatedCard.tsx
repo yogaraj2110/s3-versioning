@@ -25,24 +25,34 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
     rootMargin: '0px'
   });
 
+  const getAnimationClasses = () => {
+    if (!isVisible) {
+      switch (animation) {
+        case 'slide-in-bottom':
+        case 'fade-in':
+          return 'opacity-0 translate-y-10';
+        case 'slide-in-top':
+          return 'opacity-0 translate-y-[-40px]';
+        case 'slide-in-right':
+          return 'opacity-0 translate-x-10';
+        case 'slide-in-left':
+          return 'opacity-0 translate-x-[-40px]';
+        case 'scale-in':
+          return 'opacity-0 scale-95';
+        default:
+          return 'opacity-0';
+      }
+    }
+    
+    return 'opacity-100 translate-y-0 translate-x-0 scale-100';
+  };
+
   return (
     <div
       ref={containerRef}
       className={cn(
         "transition-all duration-700 ease-out",
-        {
-          'opacity-0': !isVisible,
-          'translate-y-10': !isVisible && (animation === 'slide-in-bottom' || animation === 'fade-in'),
-          'translate-y-0 opacity-100': isVisible && (animation === 'slide-in-bottom' || animation === 'fade-in'),
-          'translate-y-[-40px]': !isVisible && animation === 'slide-in-top',
-          'translate-y-0 opacity-100': isVisible && animation === 'slide-in-top',
-          'translate-x-10 opacity-0': !isVisible && animation === 'slide-in-right',
-          'translate-x-0 opacity-100': isVisible && animation === 'slide-in-right',
-          'translate-x-[-40px] opacity-0': !isVisible && animation === 'slide-in-left',
-          'translate-x-0 opacity-100': isVisible && animation === 'slide-in-left',
-          'scale-95 opacity-0': !isVisible && animation === 'scale-in',
-          'scale-100 opacity-100': isVisible && animation === 'scale-in',
-        },
+        getAnimationClasses(),
         className
       )}
       style={{ transitionDelay: `${delay}ms` }}
