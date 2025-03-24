@@ -37,7 +37,7 @@ const AboutSection: React.FC = () => {
       
       <div className="max-w-7xl mx-auto">
         <AnimatedCard animation="fade-in">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">About Mee</h2>
         </AnimatedCard>
         
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
